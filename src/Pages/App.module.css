@@ -57,11 +57,11 @@
 @media (max-width: 592px) {
   .videocontainer {
     width: 100vw;
-    height: 70vh;
+    height: 75vh;
     margin-top: 0px;
   }
   .frame {
-    width: 55vw;
-    height: 55vw;
+    width: 60vw;
+    height: 60vw;
   }
 }
