@@ -7,8 +7,8 @@
   position: relative;
 }
 .video {
-  width: 100%;
-  height: 100%;
+  width: 30vw;
+  height: 32vw;
   object-fit: fill;
   border-radius: 8px;
 }
@@ -27,6 +27,15 @@
   margin-inline: auto;
   text-transform: capitalize;
   text-align: center;
+  background-color: gray;
+  color: white;
+  border-radius: 7px;
+  border: 1px solid black;
+}
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 @media (max-width: 1092px) {
   .frame {
@@ -39,6 +48,10 @@
     width: 50vw;
     height: 60vw;
   }
+  .video {
+    width: 50vw;
+    height: 55vw;
+  }
   .frame {
     width: 20vw;
     height: 30vw;
@@ -48,6 +61,10 @@
   .videocontainer {
     width: 55vw;
     height: 55vw;
+  }
+  .video {
+    width: 55vw;
+    height: 53vw;
   }
   .frame {
     width: 25vw;
@@ -59,6 +76,10 @@
     width: 100vw;
     height: 70vh;
     margin-top: 0px;
+  }
+  .video {
+    width: 100vw;
+    height: 65vh;
   }
   .frame {
     width: 60vw;
