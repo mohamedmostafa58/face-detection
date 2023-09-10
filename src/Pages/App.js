@@ -10,7 +10,7 @@ function App() {
   const [isFaceTooClose, setIsFaceTooClose] = useState(false);
 
   const loadModels = async () => {
-    await faceapi.loadTinyFaceDetectorModel("models");
+    await faceapi.loadSsdMobilenetv1Model("/models");
     await faceapi.loadFaceLandmarkModel("models");
   };
 
@@ -36,7 +36,10 @@ function App() {
           const frameRect = frame.getBoundingClientRect();
           const videoRect = video.getBoundingClientRect();
           const detections = await faceapi
-            .detectAllFaces(video, new faceapi.TinyFaceDetectorOptions())
+            .detectAllFaces(
+              video,
+              new faceapi.SsdMobilenetv1Options({ minConfidence: 0.5 })
+            )
             .withFaceLandmarks();
           const ctx = canvas.getContext("2d");
           ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -47,7 +50,6 @@ function App() {
 
           if (resizedDetections.length > 0) {
             const faceInRoi = resizedDetections[0].detection.box;
-            console.log("Face Detection Coordinates:", faceInRoi);
             ctx.strokeStyle = "red";
             ctx.lineWidth = 2;
             ctx.beginPath();
@@ -103,7 +105,9 @@ function App() {
       ></canvas>
       {isFaceDetected ? (
         <h3>
-          {isFaceTooClose ? "verified" : "put your face in the gray frame"}
+          {isFaceTooClose
+            ? "verified"
+            : "try to put the red rectangular in the gray one "}
         </h3>
       ) : (
         <h3>look at the camera and put your face in the frame </h3>
